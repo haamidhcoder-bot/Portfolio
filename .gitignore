@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+data/messages.json
+.venv/
+__pycache__/
+*.pyc

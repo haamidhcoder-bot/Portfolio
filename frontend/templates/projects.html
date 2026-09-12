@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block body %}
+<header class="navbar">
+  <a class="logo" href="{{ url_for('home') }}#home"><span>H</span>aamidh</a>
+  <button class="menu-btn" aria-label="Open menu">☰</button>
+  <nav>
+    <a href="{{ url_for('home') }}#home">Home</a>
+    <a href="{{ url_for('home') }}#about">About</a>
+    <a class="active" href="{{ url_for('projects') }}">Projects</a>
+    <a href="{{ url_for('home') }}#skills">Skills</a>
+    <a href="{{ url_for('home') }}#experience">Experience</a>
+    <a href="{{ url_for('home') }}#contact">Contact</a>
+  </nav>
+  <div class="nav-social">
+    <a href="https://github.com/haamidhcoder-bot" aria-label="GitHub">GitHub</a>
+    <a href="https://www.linkedin.com/in/haamidh-mohideen-b056a2415/" aria-label="LinkedIn">in</a>
+    <button id="themeBtn" aria-label="Toggle theme">☼</button>
+  </div>
+</header>
+
+<main>
+  <section class="section projects-page">
+    <div class="section-label">— ALL PROJECTS</div>
+    <div class="section-heading">
+      <div>
+        <h1>My Projects</h1>
+        <p>Explore the applications and tools I've built while learning and developing.</p>
+      </div>
+      <a class="btn secondary" href="{{ url_for('home') }}#projects">← Back Home</a>
+    </div>
+
+    <div class="projects projects-grid">
+      {% for project in projects %}
+      <article class="project-card">
+        <div class="project-icon {{ project.icon_class }}">{{ project.icon }}</div>
+        <h3>{{ project.name }}</h3>
+        <p>{{ project.description }}</p>
+        <div class="tags">{% for tech in project.technologies %}<span>{{ tech }}</span>{% endfor %}</div>
+        <div class="project-links">
+          <a href="{{ url_for('project_detail', project_id=project.id) }}">View Project →</a>
+          {% if project.live_demo %}<a href="{{ project.live_demo }}" target="_blank" rel="noopener">↗ Live Demo</a>{% endif %}
+          {% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+        </div>
+      </article>
+      {% else %}
+      <p>No projects added yet.</p>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+<footer><span>© 2026 Haamidh Mohideen. All rights reserved.</span><span>Python · Flask · JavaScript · Build · Learn · Grow</span></footer>
+{% endblock %}

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "edutrack",
+    "name": "Edutrack",
+    "description": "A school management and student performance analysis platform with AI support.",
+    "technologies": ["Python", "Flask", "MySQL", "JavaScript", "Gemini API"],
+    "github": "https://github.com/haamidhcoder-bot/EduTrack",
+    "live_demo": "",
+    "icon": "⌂",
+    "icon_class": "green",
+    "status": "In development"
+  },
+  {
+    "id": "expensify",
+    "name": "Expensify",
+    "description": "A personal expense tracker with a clean UI, analytics and spending insights.",
+    "technologies": ["Python", "Flask", "JavaScript"],
+    "github": "https://github.com/haamidhcoder-bot/Expensify",
+    "live_demo": "",
+    "icon": "▣",
+    "icon_class": "violet",
+    "status": "In development"
+  },
+  {
+    "id": "project-generator",
+    "name": "Project Generator",
+    "description": "A Python tool that creates folder and file structures from user input for quick project setup.",
+    "technologies": ["Python", "OS", "Pathlib"],
+    "github": "https://github.com/haamidhcoder-bot/Project-Generator",
+    "live_demo": "",
+    "icon": "</>",
+    "icon_class": "gray",
+    "status": "Completed"
+  }
+]

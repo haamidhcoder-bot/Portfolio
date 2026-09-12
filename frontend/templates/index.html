@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{%block body%}
+<header class="navbar">
+  <a class="logo" href="#home"><span>H</span>aamidh</a>
+    <button class="menu-btn" aria-label="Open menu">☰</button>
+    <nav>
+      <a class="active" href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-social">
+      <a href="https://github.com/haamidhcoder-bot" aria-label="GitHub">GitHub</a>
+      <a href="https://www.linkedin.com/in/haamidh-mohideen-b056a2415/" aria-label="LinkedIn">in</a>
+      <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+      <button id="themeBtn" aria-label="Toggle theme">☼</button>
+    </div>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-wrap">
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <main>
+    <section id="home" class="hero section">
+      <div class="hero-copy">
+        <div class="eyebrow">&lt;/&gt; Python Developer</div>
+        <h1>Hi, I'm <strong>Haamidh<br>Mohideen</strong></h1>
+        <p>I build real-world solutions with Python, Flask and modern technologies. Passionate about creating useful applications and learning new things every day.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">View My Projects <span>→</span></a>
+          <a class="btn secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="glow"></div>
+        <div class="code-window">
+          <div class="window-top"><i></i><i></i><i></i></div>
+          <div class="code-lines">
+            <span><b>def</b> build_project():</span>
+            <span class="indent"><b>stack</b> = [<em>"Python"</em>,</span>
+            <span class="indent2"><em>"Flask"</em>, <em>"MySQL"</em>]</span>
+            <span class="indent">return <b>solution</b></span>
+            <span></span>
+            <span><b>print</b>(<em>"Keep building."</em>)</span>
+          </div>
+        </div>
+        <div class="tech-badge b1">🐍 &nbsp;Python</div>
+        <div class="tech-badge b2">◉ &nbsp;MySQL</div>
+        <div class="tech-badge b3">JS &nbsp; JavaScript</div>
+        <div class="tech-badge b4">◆ &nbsp; Git</div>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="section-label">— ABOUT ME</div>
+      <div class="about-grid">
+        <div>
+          <h2>Turning Ideas into<br>Working Applications</h2>
+          <p>I'm a Python developer focused on web development with Flask and building projects that solve real problems. I enjoy working with databases, AI, and modern web technologies.</p>
+          <p>I'm always eager to learn, improve and take on new challenges.</p>
+        </div>
+        <div class="traits">
+          <article><div class="trait-icon">&lt;/&gt;</div><h3>Problem Solver</h3><p>I love breaking down complex problems and finding simple solutions.</p></article>
+          <article><div class="trait-icon">💡</div><h3>Quick Learner</h3><p>Always curious and excited to learn new technologies.</p></article>
+          <article><div class="trait-icon">♧</div><h3>Team Player</h3><p>Enjoy collaborating and building great things together.</p></article>
+          <article><div class="trait-icon">◎</div><h3>Goal Oriented</h3><p>Focused on growing my skills and creating impactful projects.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="section-label purple">— MY SKILLS</div>
+      <h2>Technologies I Work With</h2>
+      <div class="skills">
+        <span>🐍 Python</span><span>⚗ Flask</span><span>◉ MySQL</span><span>JS JavaScript</span>
+        <span>▣ HTML5</span><span>▤ CSS3</span><span>◆ Git</span><span>◉ GitHub</span>
+        <span>✦ AI / Gemini API</span><span>⌘ VS Code</span><span>▣ HTML</span><span>▤ CSS</span><span>▦ Bootstrap</span>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-label">— MY PROJECTS</div>
+      <div class="section-heading"><h2>Some of My Works</h2><a href="{{ url_for('projects') }}">View All Projects →</a></div>
+      <div class="projects">
+        {% for project in projects[:3] %}
+        <article class="project-card">
+          <div class="project-icon {{ project.icon_class }}">{{ project.icon }}</div>
+          <h3>{{ project.name }}</h3>
+          <p>{{ project.description }}</p>
+          <div class="tags">{% for tech in project.technologies %}<span>{{ tech }}</span>{% endfor %}</div>
+          <div class="project-links">
+            {% if project.live_demo %}<a href="{{ project.live_demo }}" target="_blank" rel="noopener">↗ Live Demo</a>{% else %}<span class="project-disabled">Live Demo soon</span>{% endif %}
+            {% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">GitHub</a>{% else %}<span class="project-disabled">GitHub soon</span>{% endif %}
+          </div>
+        </article>
+        {% else %}
+        <p>No projects added yet.</p>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="experience" class="section split-section">
+      <div>
+        <div class="section-label">— EXPERIENCE</div><h2>What I've Done</h2>
+        <div class="timeline">
+          <div><b>Personal Projects</b><p>Built multiple web applications including Edutrack and Expensify using Python, Flask and MySQL.</p></div>
+          <div><b>Learning & Growth</b><p>Exploring advanced MySQL, JavaScript, AI and building more projects to improve my skills.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label purple">— EDUCATION</div><h2>My Academic Journey</h2>
+        <div class="timeline">
+          <div><b>Currently in College</b><p>Pursuing my degree and building a strong foundation in Computer Science and technology.</p></div>
+          <div><b>Continuous Learner</b><p>Always exploring new tools, frameworks and technologies to grow as a developer.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div>
+        <div class="section-label">— GET IN TOUCH</div>
+        <h2>Let's Connect</h2>
+        <p>Feel free to reach out if you want to collaborate, have a project idea, or just say hi!</p>
+      </div>
+      <div class="contact-content">
+        <form class="contact-form" action="{{ url_for('contact') }}" method="POST">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required maxlength="100">
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required maxlength="254">
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me what you'd like to build..." required maxlength="5000"></textarea>
+
+          <button class="btn primary" type="submit">Send Message <span>→</span></button>
+        </form>
+
+        <div class="contact-links">
+          <a href="https://github.com/haamidhcoder-bot">GitHub</a>
+          <a href="https://www.linkedin.com/in/haamidh-mohideen-b056a2415/">in &nbsp; LinkedIn</a>
+          <a href="mailto:haamidhpm@gmail.com">✉ &nbsp; Email</a>
+        </div>
+      </div>
+      <div class="slogan">Better<br>Code.<br><em>Bigger<br>Dreams.</em></div>
+    </section>
+  </main>
+
+  <footer><span>© 2026 Haamidh Mohideen. All rights reserved.</span><span>Python · Flask · JavaScript · Build · Learn · Grow</span></footer>
+  
+{%endblock%}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body %}
+<header class="navbar">
+  <a class="logo" href="{{ url_for('home') }}#home"><span>H</span>aamidh</a>
+  <nav><a href="{{ url_for('home') }}#projects">Projects</a></nav>
+  <div class="nav-social"><button id="themeBtn" aria-label="Toggle theme">☼</button></div>
+</header>
+<main>
+  <section class="section project-detail">
+    <div class="section-label">— PROJECT</div>
+    <div class="project-icon {{ project.icon_class }}">{{ project.icon }}</div>
+    <h1>{{ project.name }}</h1>
+    <p>{{ project.description }}</p>
+    <div class="tags">{% for tech in project.technologies %}<span>{{ tech }}</span>{% endfor %}</div>
+    <div class="actions">
+      {% if project.live_demo %}<a class="btn primary" href="{{ project.live_demo }}" target="_blank" rel="noopener">Live Demo ↗</a>{% endif %}
+      {% if project.github %}<a class="btn secondary" href="{{ project.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+      <a class="btn secondary" href="{{ url_for('projects') }}">← All Projects</a>
+    </div>
+  </section>
+</main>
+{% endblock %}
