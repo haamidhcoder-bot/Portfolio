@@ -129,7 +129,7 @@ def contact():
         flash("Thanks! Your message was sent successfully.", "success")
     except (OSError, smtplib.SMTPException, ValueError, RuntimeError) as exc:
         app.logger.warning("Contact email could not be sent: %s", exc)
-        flash("Your message was saved, but email notification could not be sent.or due to deploying apps", "error")
+        flash("Your message was saved, but email notification could not be sent.", "error")
 
     return redirect(url_for("home") + "#contact")
 
